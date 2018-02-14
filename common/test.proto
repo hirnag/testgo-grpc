@@ -1,0 +1,16 @@
+syntax = "proto3"
+
+package test
+
+service test {
+  rpc Proto(TestRequest) returns (TestResponse){}
+}
+
+message TestRequest{
+  string name = 1;
+}
+
+message TestResponse{
+  string value = 1;
+}
+

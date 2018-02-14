@@ -1,0 +1,25 @@
+version: '3'
+services:
+  app:
+    hostname: app
+    image: golang:latest
+    working_dir: '/go/src/app'
+    command: sh ./app/start_cmd.sh
+    volumes:
+      - .:/go/src/app
+    ports:
+      - 8080:5000
+    tty: true
+  web:
+    hostname: web
+    build: ./web
+    working_dir: '/src/web'
+    command: sh ./web/start_cmd.sh
+    volumes:
+      - .:/src/web
+    ports:
+      - 3000:3000
+    links:
+      - app
+    tty: true
+
