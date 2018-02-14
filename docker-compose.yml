@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     hostname: app
-    image: golang:latest
+    build: ./app
     working_dir: '/go/src/app'
     command: sh ./app/start_cmd.sh
     volumes:
