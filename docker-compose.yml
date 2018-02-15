@@ -4,9 +4,10 @@ services:
     hostname: app
     build: ./app
     working_dir: '/go/src/app'
-    command: sh ./app/start_cmd.sh
+    command: sh ./start_cmd.sh
     volumes:
-      - .:/go/src/app
+      - ./app:/go/src/app
+      - ./common/pb:/go/src/app/pb
     ports:
       - 8080:5000
     tty: true
@@ -17,6 +18,7 @@ services:
     command: sh ./web/start_cmd.sh
     volumes:
       - .:/src/web
+      - ./common/pb:/src/web/pb
     ports:
       - 3000:3000
     links:

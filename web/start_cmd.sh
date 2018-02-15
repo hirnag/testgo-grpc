@@ -1,6 +1,7 @@
 #!/bin/bash
 
+pwd
 cd web
-npm i
-npm start
+# npm i
+# npm start
 

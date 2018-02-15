@@ -1,3 +1,4 @@
 #!/bin/bash
 
-go run app/main.go
+protoc --go_out=plugins=grpc:. pb/*.proto
+go run main.go
