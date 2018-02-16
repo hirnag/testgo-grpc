@@ -3,11 +3,13 @@ package handler
 import (
 	pb "../../proto"
 	"context"
-	"log"
+	"github.com/labstack/echo/middleware"
+	"github.com/labstack/echo"
 )
 
-
 func SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
-	log.Printf("New Request: %v", in.String())
+	e := echo.New()
+	e.Use(middleware.Logger())
+	e.Logger.Infof("New Request: %v", in.String())
 	return &pb.HelloReply{Message: "Hello, " + in.Name + "!"}, nil
 }

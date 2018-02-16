@@ -1,27 +1,14 @@
 version: '3'
 services:
-  app:
-    hostname: app
-    build: ./app
+  server_go:
+    hostname: server_go
+    build: server_go
     working_dir: '/go/src/app'
     command: sh ./start_cmd.sh
     volumes:
-      - ./app:/go/src/app
-      - ./common/pb:/go/src/app/pb
+      - ./server_go:/go/src/app
+      - ./proto:/go/src/proto
     ports:
-      - 8080:5000
-    tty: true
-  web:
-    hostname: web
-    build: ./web
-    working_dir: '/src/web'
-    command: sh ./web/start_cmd.sh
-    volumes:
-      - .:/src/web
-      - ./common/pb:/src/web/pb
-    ports:
-      - 3000:3000
-    links:
-      - app
+      - 5000:5000
     tty: true
 
