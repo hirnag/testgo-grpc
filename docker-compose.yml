@@ -11,4 +11,16 @@ services:
     ports:
       - 5000:5000
     tty: true
-
+  client_go:
+    hostname: client_go
+    build: client_go
+    working_dir: '/go/src/web'
+    command: sh ./start_cmd.sh
+    volumes:
+      - ./client_go:/go/src/web
+      - ./proto:/go/src/proto
+    ports:
+      - 8080:8080
+    links:
+      - server_go
+    tty: true
