@@ -28,3 +28,6 @@ RUN go get github.com/golang/protobuf/protoc-gen-go
 RUN go get github.com/labstack/echo
 RUN go get github.com/dgrijalva/jwt-go
 
+# generate simbolic link for "go get"
+RUN ln -s /go/pkg/linux_amd64/* /usr/local/go/pkg/linux_amd64/
+
